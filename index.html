@@ -5,6 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hernando's</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Highlight animation for image zoom */
+    .highlight-img {
+      transform: scale(1.05) !important;
+      filter: grayscale(30%) !important;
+      box-shadow: 0 8px 20px rgba(178, 34, 34, 0.4) !important;
+      transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    /* Highlight animation for sections */
+    .highlight-section {
+      animation: sectionPulse 1s ease-in-out;
+      box-shadow: 0 0 15px 5px rgba(255, 76, 76, 0.4); /* Soft red glow */
+      border-color: #FF4C4C;
+    }
+
+    @keyframes sectionPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      justify-content: center;
+      align-items: center;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      z-index: 999;
+    }
+
+    .lightbox.show {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
+  </style>
 </head>
 <body>
 
@@ -14,10 +58,10 @@
   </header>
 
   <nav>
-    <a href="#about">About</a>
-    <a href="#menu-gallery">Menu & Gallery</a>
-    <a href="#location">Location</a>
-    <a href="#contact">Contact</a>
+    <a href="#about" class="nav-link">About</a>
+    <a href="#menu-gallery" class="nav-link">Menu & Gallery</a>
+    <a href="#location" class="nav-link">Location</a>
+    <a href="#contact" class="nav-link">Contact</a>
   </nav>
 
   <section id="about">
@@ -31,29 +75,29 @@
     <!-- Siomai Menu -->
     <h3>Siomai</h3>
     <div class="menu-grid">
-      <div class="menu-item"><span>Pork Siomai</span> <span>₱30</span></div>
-      <div class="menu-item"><span>Beef Siomai</span> <span>₱30</span></div>
-      <div class="menu-item"><span>Japanese Siomai</span> <span>₱35</span></div>
-      <div class="menu-item"><span>Shark's Fin</span> <span>₱30</span></div>
+      <a href="#pork-siomai" class="menu-item"><span>Pork Siomai</span> <span>₱30</span></a>
+      <a href="#beef-siomai" class="menu-item"><span>Beef Siomai</span> <span>₱30</span></a>
+      <a href="#japanese-siomai" class="menu-item"><span>Japanese Siomai</span> <span>₱35</span></a>
+      <a href="#sharks-fin" class="menu-item"><span>Shark's Fin</span> <span>₱30</span></a>
     </div>
 
     <div class="gallery-container">
-      <img src="images/siomai1.jpg" alt="Pork Siomai" />
-      <img src="images/siomai2.jpg" alt="Beef Siomai" />
-      <img src="images/siomai3.jpg" alt="Japanese Siomai" />
-      <img src="images/siomai4.jpg" alt="Shark's Fin" />
+      <img id="pork-siomai" src="images/siomai1.jpg" alt="Pork Siomai" />
+      <img id="beef-siomai" src="images/siomai2.jpg" alt="Beef Siomai" />
+      <img id="japanese-siomai" src="images/siomai3.jpg" alt="Japanese Siomai" />
+      <img id="sharks-fin" src="images/siomai4.jpg" alt="Shark's Fin" />
     </div>
 
     <!-- Rice Meals Menu -->
     <h3>Rice Meals</h3>
     <div class="menu-grid">
-      <div class="menu-item"><span>Jumbo Siomai Rice</span> <span>₱55</span></div>
-      <div class="menu-item"><span>Siomai Rice</span> <span>₱45</span></div>
+      <a href="#jumbo-siomai-rice" class="menu-item"><span>Jumbo Siomai Rice</span> <span>₱55</span></a>
+      <a href="#siomai-rice" class="menu-item"><span>Siomai Rice</span> <span>₱45</span></a>
     </div>
 
     <div class="gallery-container">
-      <img src="images/siomai_rice1.jpg" alt="Jumbo Siomai Rice" />
-      <img src="images/siomai_rice2.jpg" alt="Siomai Rice" />
+      <img id="jumbo-siomai-rice" src="images/siomai_rice1.jpg" alt="Jumbo Siomai Rice" />
+      <img id="siomai-rice" src="images/siomai_rice2.jpg" alt="Siomai Rice" />
     </div>
 
   </section>
@@ -72,6 +116,12 @@
   <footer>
     <p>&copy; 2025 Hernando's. All rights reserved.</p>
   </footer>
+
+  <div id="lightbox" class="lightbox">
+    <img src="" alt="Enlarged Image" />
+  </div>
+
+  <script src="script.js"></script>
 
 </body>
 </html>
