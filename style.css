@@ -115,6 +115,7 @@ section {
   border-radius: 16px;
   border-left: 4px solid #8B0000;
   box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  transition: box-shadow 0.6s ease, border-color 0.6s ease;
 }
 
 /* Menu Grid */
@@ -155,14 +156,14 @@ section {
   height: 200px;
   object-fit: cover;
   border-radius: 14px;
-  filter: grayscale(95%);
+  filter: none;
   border: 2px solid #1a1a1a;
   transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
 }
 
 .gallery-container img:hover {
   transform: scale(1.05);
-  filter: grayscale(30%);
+  filter: none;
   border-color: #B22222;
   box-shadow: 0 8px 20px rgba(178, 34, 34, 0.4);
 }
@@ -207,14 +208,74 @@ footer {
   height: 200px;
   object-fit: cover;
   border-radius: 14px;
-  filter: grayscale(95%);
+  filter: none;
   border: 2px solid #1a1a1a;
   transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
 }
 
 .gallery-container img:hover {
   transform: scale(1.05);
-  filter: grayscale(30%);
+  filter: none;
   border-color: #B22222;
   box-shadow: 0 8px 20px rgba(178, 34, 34, 0.4);
+}
+/* Lightbox Styles */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  cursor: zoom-out;
+  animation: fadeIn 0.3s ease;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(255, 76, 76, 0.4);
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+}
+
+.lightbox.show img {
+  transform: scale(1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  cursor: zoom-out;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.show {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
 }
